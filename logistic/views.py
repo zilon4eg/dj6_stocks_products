@@ -11,15 +11,15 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     # при необходимости добавьте параметры фильтрации
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['title',]
-    search_fields = ['description',]
+    search_fields = ['title', 'description']
 
 
 class StockViewSet(ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
     # при необходимости добавьте параметры фильтрации
-
+    filterset_fields = ['products']
+    search_fields = ['address']
 
 
 class StockProductViewSet(ModelViewSet):
